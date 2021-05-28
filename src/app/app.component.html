@@ -6,7 +6,7 @@
       <p class="has-text-centered">
         <span
           *ngFor="let letter of sentence.split(''); let i = index"
-          style.color="{{ userInput[i] == sentence[i] ? 'green' : 'red' }}"
+          [style.color]="getLetterColor(i)"
           >{{ letter }}</span
         >
       </p>
@@ -22,8 +22,6 @@
       <div *ngIf="isCorrectSpelling()" class="box has-text-centered">
         <h1 class="title">Success!</h1>
       </div>
-
-      <button (click)="checkSpelling()">Check</button>
     </div>
   </div>
 </div>

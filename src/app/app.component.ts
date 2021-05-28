@@ -20,12 +20,11 @@ export class AppComponent {
     return this.userInput == this.sentence;
   }
 
-  checkSpelling() {
-    console.log(`User Input: ${this.userInput}`);
-    if (this.userInput == this.sentence) {
-      console.log('Correct Spelling!');
-    } else {
-      console.log('Incorrect Spelling!');
+  getLetterColor(i: number): string {
+    if (i < this.userInput.length) {
+      return this.userInput[i] == this.sentence[i] ? 'green' : 'red';
     }
+
+    return 'black';
   }
 }
