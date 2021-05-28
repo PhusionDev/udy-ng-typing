@@ -3,15 +3,27 @@
     <div class="box column is-one-third">
       <h1 class="title has-text-centered">Typing Challenge</h1>
 
-      <p class="has-text-centered">{{ sentence }}</p>
+      <p class="has-text-centered">
+        <span
+          *ngFor="let letter of sentence.split(''); let i = index"
+          style.color="{{ userInput[i] == sentence[i] ? 'green' : 'red' }}"
+          >{{ letter }}</span
+        >
+      </p>
 
       <div class="field">
-        <input class="input" />
+        <input
+          (input)="onValueChanged($event.target.value)"
+          [value]="userInput"
+          class="input"
+        />
       </div>
 
-      <div class="box has-text-centered">
+      <div *ngIf="isCorrectSpelling()" class="box has-text-centered">
         <h1 class="title">Success!</h1>
       </div>
+
+      <button (click)="checkSpelling()">Check</button>
     </div>
   </div>
 </div>

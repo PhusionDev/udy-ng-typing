@@ -7,7 +7,25 @@ import { lorem } from 'faker';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  sentence: string = lorem.sentence();
+  sentence: string = lorem.sentence(3);
+  userInput: string = '';
 
   title = 'typing';
+
+  onValueChanged(value: string) {
+    this.userInput = value;
+  }
+
+  isCorrectSpelling() {
+    return this.userInput == this.sentence;
+  }
+
+  checkSpelling() {
+    console.log(`User Input: ${this.userInput}`);
+    if (this.userInput == this.sentence) {
+      console.log('Correct Spelling!');
+    } else {
+      console.log('Incorrect Spelling!');
+    }
+  }
 }
