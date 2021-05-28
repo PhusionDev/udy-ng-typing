@@ -12,8 +12,8 @@ export class AppComponent {
 
   title = 'typing';
 
-  onValueChanged(value: string) {
-    this.userInput = value;
+  onValueChanged(e: Event) {
+    this.userInput = (e.target as HTMLInputElement).value;
   }
 
   isCorrectSpelling() {
